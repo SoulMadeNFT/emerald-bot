@@ -410,7 +410,7 @@ client.on('messageCreate', message => {
 
     // Executes the youtube.js file
     if (command === 'test') {
-        console.log("wtf")
+        console.log("wtf,hi soulmade")
         message.channel.send('Jacob is so talented, smart, and attractive. I was not forced to say this.').catch((e) => console.log(e));
     }
 });
