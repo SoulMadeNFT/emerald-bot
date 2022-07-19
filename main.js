@@ -17,6 +17,8 @@ fcl.config()
     .put('0xFN', '0x233eb012d34b0070')
     .put('0xNFT', '0x1d7e57aa55817448')
     .put('0xEmeraldIdentity', '0x39e42c67cc851cfb')
+    .put('0xSoulMadeMain','0x9a57dfe5c8ce609c')
+    .put('0xSoulMadeComponent','0x9a57dfe5c8ce609c')
 
 const port = process.env.PORT || 5000;
 
@@ -236,6 +238,26 @@ client.once('ready', () => {
     });
 
     commands?.create({
+        name: 'soulmade',
+        description: 'Soulmade Command',
+        options: [
+            {
+                name: 'verifymain',
+                description: 'Verify The Soulmade had completed',
+                options: [
+                    {
+                        name: 'account',
+                        description: 'The users address, .find, or .fn name',
+                        required: true,
+                        type: Constants.ApplicationCommandOptionTypes.STRING
+                    }
+                ],
+                type: Constants.ApplicationCommandOptionTypes.SUB_COMMAND
+            }
+        ]
+    });
+
+    commands?.create({
         name: 'indiscord',
         description: 'Export a .csv of all the people currently in your Discord AMA',
         options: [
@@ -422,7 +444,7 @@ client.on('interactionCreate', async interaction => {
 
         // Check the interactor's EmeraldID (null if they don't have one)
         const emeraldIds = await checkEmeraldID(interaction.member.id);
-        console.log("EmeraldID", emeraldIds);
+        console.log("HereEmeraldID", emeraldIds);
         if (!emeraldIds) {
             client.commands.get('initializeEmeraldID')?.execute(interaction);
             return;
