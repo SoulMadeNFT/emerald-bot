@@ -1,10 +1,9 @@
 const {checkSoulMadeComplete} = require('../../flow/scripts/checkSoulMadeComplete');
-const { getFloatInfo } = require('../../flow/scripts/getFloatInfo.js');
 
 const execute = async(interaction, options) => {
     await interaction.deferReply({ ephemeral: false });
     let address = options.getString('account')
-    let result = await checkSoulMadeComplete(address);
+    let result = await checkSoulMadeComplete(address,"Charles-Mastery");
     if (result.error) {
         await interaction.followUp({ ephemeral: false, content: "Something Wrong, Please Check The Parameter" }).catch(e => console.log(e));
         return 
@@ -47,7 +46,7 @@ const postVerify = async(interaction, result,address) => {
 }
 
 module.exports = {
-    name: 'soulmade-verifymain',
+    name: 'soulmade-verifycharles',
     description: 'verifies if a user has a nft from a certain contract',
     execute,
 }

@@ -242,12 +242,25 @@ client.once('ready', () => {
         description: 'Soulmade Command',
         options: [
             {
-                name: 'verifymain',
-                description: 'Verify The Soulmade had completed',
+                name: 'verifyomnist',
+                description: 'Verify the completion of the Omnist series',
                 options: [
                     {
                         name: 'account',
-                        description: 'The users address, .find, or .fn name',
+                        description: 'Address to be verified by the user',
+                        required: true,
+                        type: Constants.ApplicationCommandOptionTypes.STRING
+                    }
+                ],
+                type: Constants.ApplicationCommandOptionTypes.SUB_COMMAND
+            },
+            {
+                name: 'verifycharles',
+                description: 'Verify the completion of the Charles series',
+                options: [
+                    {
+                        name: 'account',
+                        description: 'Address to be verified by the user',
                         required: true,
                         type: Constants.ApplicationCommandOptionTypes.STRING
                     }
